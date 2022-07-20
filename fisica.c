@@ -1,6 +1,7 @@
 #include <math.h>
 #include "config.h"
 #include "fisica.h"
+#include "nave.h"
 
 #define DIM 2
 
@@ -14,11 +15,11 @@ static double comp_pos(double pi, double vi, double dt)
     return pi + dt * vi;
 }
 
-void mov_obj(mov_t *obj, int gravX, int gravY, bool chorro)
+void mov_nave(nave_t *obj, int gravX, int gravY)
 {
     int acelera[DIM];
 
-    if(chorro)
+    if(obj->chorro)
     {
     acelera[X] = (NAVE_ACELERACION * cos(obj->dir)) - gravX;
     acelera[Y] = (NAVE_ACELERACION * sin(obj->dir)) - gravY;

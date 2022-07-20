@@ -4,17 +4,12 @@
 #include <stddef.h>
 #include <stdbool.h>
 #include "config.h"
+#include "nave.h"
 
 enum dim{
     X,
     Y,
 };
-
-typedef struct{
-    float pos[2];   
-    float vel[2];   
-    float dir; //radianes
-}mov_t;
 
 double comp_vel(double vi, double a, double dt);
 
@@ -28,7 +23,7 @@ double comp_pos(double pi, double vi, double dt);
  * @param gravY 
  * @param chorro 
  */
-void mov_obj(mov_t *obj, int gravX, int gravY, bool chorro);
+void mov_nave(nave_t *obj, int gravX, int gravY);
 
 
 #endif /* FISICA_H */

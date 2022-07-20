@@ -187,8 +187,8 @@ lista_t *guardar_figuras(char *archivo){
     FILE *f = fopen(*archivo, "rb");
     if(f == NULL) return NULL;
 
-    lista_t *figutas_lista = lista_crear();
-    if(figutas_lista == NULL)
+    lista_t *figuras_lista = lista_crear();
+    if(figuras_lista == NULL)
     {
         fclose(f);
         return NULL;
@@ -220,7 +220,7 @@ lista_t *guardar_figuras(char *archivo){
                 for (size_t j = 0; j < i; j++)
                     polilinea_destruir(fig->polis[j]);
                 
-                lista_destruir(figutas_lista, r_figura_destruir(fig));
+                lista_destruir(figuras_lista, r_figura_destruir(fig));
                 fclose(f);
                 return NULL;
             }
@@ -229,14 +229,14 @@ lista_t *guardar_figuras(char *archivo){
             fig->polis[i] = poli;
         }
 
-        if(! lista_agregar_al_final(figutas_lista, fig))
+        if(! lista_agregar_al_final(figuras_lista, fig))
         {                                        
-            lista_destruir(figutas_lista, r_figura_destruir(fig));
+            lista_destruir(figuras_lista, r_figura_destruir(fig));
             fclose(f);
             return NULL;
         }
 
     }
     fclose(f);
-    return figutas_lista;
+    return figuras_lista;
 }
